@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+/* ============================================================
+   SETU Design Tokens — v2
+   Institutional, restrained, table/data-first. Not a SaaS landing page.
+   Radius stays small (4/6/8px). No pills, no glow, no gradients.
+   ============================================================ */
+:root {
+  --paper: #f7f5f0;
+  --surface: #ffffff;
+  --surface-sunken: #efece3;
+
+  --ink-950: #0d1420;
+  --ink-900: #12192a;
+  --ink-800: #1c2438;
+
+  --ink: #191a17;
+  --ink-muted: #55564e;
+  --ink-faint: #86847a;
+
+  --border: #dedad0;
+  --border-strong: #c4bfb0;
+
+  --teal-600: #2c5f5a;
+  --teal-700: #1f4642;
+  --teal-tint: #e7efec;
+
+  --saffron-600: #a8621e;
+  --saffron-tint: #f3e9db;
+
+  --success: #2c6e3f;
+  --success-tint: #e6efe4;
+  --warning: #8a5a10;
+  --warning-tint: #f3ead4;
+  --danger: #9a3324;
+  --danger-tint: #f5e7e3;
+
+  --r-xs: 3px;
+  --r-sm: 4px;
+  --r-md: 6px;
+  --r-lg: 8px;
+
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 300ms;
+
+  color-scheme: light;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-feature-settings: 'ss01' 1, 'tnum' 1;
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+}
+
+.font-mono-setu {
+  font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  font-feature-settings: 'tnum' 1;
+}
+
+::selection {
+  background: var(--teal-tint);
+  color: var(--teal-700);
+}
+
+:focus-visible {
+  outline: 2px solid var(--teal-700);
+  outline-offset: 1px;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   Motion — brief, functional, never decorative
+   ============================================================ */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fade-up-sm {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+}
+.reveal.is-visible {
+  animation: fade-up-sm var(--dur-slow) var(--ease-out) forwards;
+}
+
+.page-enter {
+  animation: fade-in var(--dur-base) var(--ease-out) both;
+}
+
+.modal-panel-enter {
+  animation: fade-up-sm var(--dur-base) var(--ease-out) both;
+}
+.modal-backdrop-enter {
+  animation: fade-in var(--dur-base) var(--ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; }
+  .reveal.is-visible, .page-enter, .modal-panel-enter, .modal-backdrop-enter {
+    animation: none !important;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.hairline { border-top: 1px solid var(--border); }
+
+.field-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  margin-bottom: 0.375rem;
+}
+
+.field-input {
+  width: 100%;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  background: var(--surface);
+  color: var(--ink);
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+.field-input::placeholder {
+  color: var(--ink-faint);
+}
+.field-input:hover:not(:disabled):not(:focus) {
+  border-color: var(--ink-faint);
+}
+.field-input:focus {
+  outline: none;
+  border-color: var(--teal-700);
+  box-shadow: 0 0 0 3px rgba(31, 70, 66, 0.12);
+}
+.field-input:disabled {
+  background: var(--surface-sunken);
+  color: var(--ink-faint);
+  cursor: not-allowed;
+}
+.field-input.field-input-error {
+  border-color: var(--danger);
+}
+.field-input.field-input-error:focus {
+  box-shadow: 0 0 0 3px rgba(154, 51, 36, 0.12);
+}
+.field-hint {
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  margin-top: 0.375rem;
+}
+.field-hint.field-hint-error {
+  color: var(--danger);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--r-sm);
+  border: 1px solid transparent;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-sunken);
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  animation: skeleton-sweep 1.5s var(--ease-out) infinite;
+}
+@keyframes skeleton-sweep {
+  to { transform: translateX(100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after { animation: none; }
+}
+
+/* Bridge motif rule: ●───── SETU ─────● */
+.bridge-rule {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.bridge-rule::before,
+.bridge-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-strong);
+}
+.bridge-node {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--teal-600);
+  flex-shrink: 0;
+}

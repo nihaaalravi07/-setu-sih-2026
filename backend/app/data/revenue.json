@@ -1,0 +1,18 @@
+[
+  {
+    "record_id": "REV-1001",
+    "name": "Rahul Kumar",
+    "dob": "2004-08-14",
+    "mobile": "9876543210",
+    "income": 250000,
+    "status": "verified"
+  },
+  {
+    "record_id": "REV-1002",
+    "name": "Priya Sharma",
+    "dob": "1998-03-22",
+    "mobile": "9123456780",
+    "income": 180000,
+    "status": "verified"
+  }
+]

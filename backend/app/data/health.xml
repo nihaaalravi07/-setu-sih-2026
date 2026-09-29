@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <HealthRecordsResponse>
+      <Record>
+        <RecordId>HLT-5001</RecordId>
+        <PatientName>R. Kumar</PatientName>
+        <DOB>14-08-2004</DOB>
+        <ContactNumber>9876543210</ContactNumber>
+        <EligibilityStatus>verified</EligibilityStatus>
+      </Record>
+      <Record>
+        <RecordId>HLT-5002</RecordId>
+        <PatientName>Priya S.</PatientName>
+        <DOB>22-03-1998</DOB>
+        <ContactNumber>9123456999</ContactNumber>
+        <EligibilityStatus>verified</EligibilityStatus>
+      </Record>
+    </HealthRecordsResponse>
+  </soap:Body>
+</soap:Envelope>

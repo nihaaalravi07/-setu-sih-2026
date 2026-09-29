@@ -1,0 +1,26 @@
+# Python backend
+backend/venv/
+backend/**/__pycache__/
+backend/**/*.pyc
+backend/setu.db
+
+# Node frontend
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+
+# Env files
+.env
+.env.local
+*.env
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
